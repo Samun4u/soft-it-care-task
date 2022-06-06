@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('clear', function () {
+    \Artisan::call('view:clear');
+    \Artisan::call('config:clear');
+    \Artisan::call('route:clear');
+    \Artisan::call('cache:clear');
+    return redirect()->back();
+});
+
 Route::get('task-one',[TaskController::class,'taskOne'])->name('task.one');
 Route::get('task-two',[TaskController::class,'taskTwo'])->name('task.two');
 Route::get('task-three',[TaskController::class,'taskThree'])->name('task.three');
